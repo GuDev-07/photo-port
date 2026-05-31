@@ -1,5 +1,14 @@
 import { portfolioImages } from "./assets/images";
-import { NavLink, PortfolioData } from "./types";
+import { GalleryItem, NavLink, PortfolioData } from "./types";
+
+const coupleGalleryItems: GalleryItem[] = portfolioImages.couples.map(
+  (src, index) => ({
+    id: `c${index + 1}`,
+    category: "couples",
+    src,
+    alt: `Casal ${String(index + 1).padStart(2, "0")}`,
+  }),
+);
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Início", href: "#home" },
@@ -23,24 +32,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     description:
       "Foram diversas histórias capturadas através das minhas lentes. De ensaios á famílias, aqui você encontra um pouco do meu trabalho e da minha visão fotográfica...",
     items: [
-      {
-        id: "c1",
-        category: "couples",
-        src: portfolioImages.couples[0],
-        alt: "Casal ao pôr do sol",
-      },
-      {
-        id: "c2",
-        category: "couples",
-        src: portfolioImages.couples[1],
-        alt: "Casal abraçado",
-      },
-      {
-        id: "c3",
-        category: "couples",
-        src: portfolioImages.couples[2],
-        alt: "Casal sorrindo",
-      },
+      ...coupleGalleryItems,
       {
         id: "f1",
         category: "family",
@@ -64,12 +56,6 @@ export const PORTFOLIO_DATA: PortfolioData = {
         category: "individual",
         src: portfolioImages.individual[1],
         alt: "Retrato editorial",
-      },
-      {
-        id: "i3",
-        category: "individual",
-        src: portfolioImages.individual[2],
-        alt: "Retrato profissional",
       },
     ],
   },

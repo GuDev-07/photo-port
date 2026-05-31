@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../components/Button";
 import { PORTFOLIO_DATA } from "../../constants";
 
 type FilterType = "all" | "family" | "couples" | "individual";
 
-const CATEGORY_LABELS: Record<Exclude<FilterType, "all">, string> = {
-  family: "Família",
-  couples: "Casais",
-  individual: "Ensaio",
-};
-
 export const PortfolioGallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+    category: string;
+  } | null>(null);
   const { gallery } = PORTFOLIO_DATA;
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const filteredItems = gallery.items.filter(
     (item) => activeFilter === "all" || item.category === activeFilter,
   );
+
+  const openImage = (src: string, alt: string, category: string) => {
+    setSelectedImage({ src, alt, category });
+  };
 
   return (
     <section
@@ -29,19 +43,23 @@ export const PortfolioGallery: React.FC = () => {
           {/* Left: Staggered Images (Featured) */}
           <div className="relative hidden md:block h-112.5 w-full">
             {gallery.items.slice(0, 2).map((item, index) => (
-              <div
+              <button
                 key={item.id}
-                className={`absolute w-[62%] max-w-77.5 aspect-4/4 rounded-2xl overflow-hidden shadow-xl shadow-black/15 ring-1 ring-black/5 backdrop-blur bg-white ${
+                type="button"
+                onClick={() => openImage(item.src, item.alt, item.category)}
+                className={`absolute w-[62%] max-w-77.5 aspect-4/4 cursor-pointer rounded-2xl overflow-hidden shadow-xl shadow-black/15 ring-1 ring-black/5 backdrop-blur bg-white ${
                   index === 0 ? "top-4 left-3 z-10" : "bottom-4 right-0 z-20"
                 }`}
               >
                 <img
                   src={item.src}
                   alt={item.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-104"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-contain bg-[#F7F8F9] transition-transform duration-700 hover:scale-104"
                   referrerPolicy="no-referrer"
                 />
-              </div>
+              </button>
             ))}
           </div>
 
@@ -60,7 +78,6 @@ export const PortfolioGallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Filters */}
         <div className="flex flex-wrap justify-center gap-5 sm:gap-10 mt-8 sm:mt-10">
           <Button
             variant={activeFilter === "all" ? "primary" : "outline"}
@@ -95,29 +112,50 @@ export const PortfolioGallery: React.FC = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredItems.map((item) => (
-            <div
+            <button
               key={item.id}
-              className="group relative aspect-4/5 rounded-xl overflow-hidden bg-gray-100 border border-black/5 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.35)]"
+              type="button"
+              onClick={() => openImage(item.src, item.alt, item.category)}
+              className="group relative aspect-4/5 cursor-pointer rounded-xl overflow-hidden bg-gray-100 border border-black/5 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.35)]"
             >
               <img
                 src={item.src}
                 alt={item.alt}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-full object-contain bg-[#F7F8F9] transition-transform duration-700 group-hover:scale-[1.03]"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                <div className="text-white space-y-1">
-                  <span className="inline-flex px-3 py-1 text-xs uppercase tracking-wide bg-white/15 backdrop-blur rounded-full border border-white/20">
-                    {CATEGORY_LABELS[item.category]}
-                  </span>
-                  <p className="text-sm font-medium leading-snug">{item.alt}</p>
-                </div>
-              </div>
-            </div>
+            </button>
           ))}
         </div>
+
+        {selectedImage && (
+          <div
+            className="fixed inset-0 z-60 bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 py-6"
+            onClick={() => setSelectedImage(null)}
+            role="presentation"
+          >
+            <div
+              className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl bg-[#061511] shadow-2xl shadow-black/50"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedImage(null)}
+                className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="Fechar imagem"
+              >
+                ×
+              </button>
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-h-[90vh] w-full object-contain bg-[#061511]"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

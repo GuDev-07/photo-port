@@ -16,7 +16,6 @@ import ensaio01 from "./ensaios/ensaio1.jpg";
 import ensaio02 from "./ensaios/ensaio2.jpg";
 import familia01 from "./familia/familia1.jpg";
 import familia02 from "./familia/familia2.jpg";
-import test1 from "./test1.jpg";
 
 export const portfolioImages = {
   couples: [
@@ -36,5 +35,5 @@ export const portfolioImages = {
     casal14,
   ],
   family: [familia01, familia02],
-  individual: [ensaio01, ensaio02, test1],
+  individual: [ensaio01, ensaio02],
 } as const;
