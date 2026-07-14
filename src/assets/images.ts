@@ -14,8 +14,16 @@ import casal08 from "./casais/casal8.jpg";
 import casal09 from "./casais/casal9.jpg";
 import ensaio01 from "./ensaios/ensaio1.jpg";
 import ensaio02 from "./ensaios/ensaio2.jpg";
+import ensaio03 from "./ensaios/ensaio3.jpg";
+import ensaio04 from "./ensaios/ensaio4.jpg";
+import ensaio05 from "./ensaios/ensaio5.jpg";
+import ensaio06 from "./ensaios/ensaio6.jpg";
 import familia01 from "./familia/familia1.jpg";
 import familia02 from "./familia/familia2.jpg";
+import familia03 from "./familia/familia3.jpg";
+import familia04 from "./familia/familia4.jpg";
+import familia05 from "./familia/familia5.jpg";
+import familia06 from "./familia/familia6.jpg";
 
 export const portfolioImages = {
   couples: [
@@ -34,6 +42,6 @@ export const portfolioImages = {
     casal13,
     casal14,
   ],
-  family: [familia01, familia02],
-  individual: [ensaio01, ensaio02],
+  family: [familia01, familia02, familia03, familia04, familia05, familia06],
+  individual: [ensaio01, ensaio02, ensaio03, ensaio04, ensaio05, ensaio06],
 } as const;

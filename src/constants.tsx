@@ -19,18 +19,32 @@ export const NAV_LINKS: NavLink[] = [
 
 export const PORTFOLIO_DATA: PortfolioData = {
   brand: {
-    logoText: "mkd", // 🔄 Logo pode ser alterada aqui
+    logoText: "Vinícius Oller",
   },
   hero: {
     greeting: "Prazer, me chamo",
-    title: "Vinícius Oller", // 🔄 Texto do header pode ser alterado aqui
-    subtitle: `Sou um fotógrafo apaixonado por contar histórias através das minhas lentes! Confira meu trabalho`,
+    title: "Vinícius Oller",
+    subtitle: `Conto histórias através das lentes.`,
     ctaText: "Acessar portfólio",
   },
   gallery: {
-    title: "MEU PORTFÓLIO", // 🔄 Título do portfólio pode ser alterado aqui
+    title: "MEU PORTFÓLIO",
     description:
-      "Foram diversas histórias capturadas através das minhas lentes. De ensaios á famílias, aqui você encontra um pouco do meu trabalho e da minha visão fotográfica...",
+      "Foram diversas experiências registradas nos últimos anos. De ensaios a famílias, aqui você encontra um pouco do meu trabalho e da minha visão fotográfica.",
+    featuredItems: [
+      {
+        id: "feat1",
+        category: "couples",
+        src: portfolioImages.couples[11],
+        alt: "Casal em destaque",
+      },
+      {
+        id: "feat2",
+        category: "couples",
+        src: portfolioImages.couples[13],
+        alt: "Casal em destaque 2",
+      },
+    ],
     items: [
       ...coupleGalleryItems,
       {
@@ -46,6 +60,30 @@ export const PORTFOLIO_DATA: PortfolioData = {
         alt: "Mãe e filho",
       },
       {
+        id: "f3",
+        category: "family",
+        src: portfolioImages.family[2],
+        alt: "Família em ensaio",
+      },
+      {
+        id: "f4",
+        category: "family",
+        src: portfolioImages.family[3],
+        alt: "Família em momento especial",
+      },
+      {
+        id: "f5",
+        category: "family",
+        src: portfolioImages.family[4],
+        alt: "Família em ensaio externo",
+      },
+      {
+        id: "f6",
+        category: "family",
+        src: portfolioImages.family[5],
+        alt: "Família reunida",
+      },
+      {
         id: "i1",
         category: "individual",
         src: portfolioImages.individual[0],
@@ -57,37 +95,61 @@ export const PORTFOLIO_DATA: PortfolioData = {
         src: portfolioImages.individual[1],
         alt: "Retrato editorial",
       },
+      {
+        id: "i3",
+        category: "individual",
+        src: portfolioImages.individual[2],
+        alt: "Ensaio individual",
+      },
+      {
+        id: "i4",
+        category: "individual",
+        src: portfolioImages.individual[3],
+        alt: "Retrato individual",
+      },
+      {
+        id: "i5",
+        category: "individual",
+        src: portfolioImages.individual[4],
+        alt: "Ensaio individual externo",
+      },
+      {
+        id: "i6",
+        category: "individual",
+        src: portfolioImages.individual[5],
+        alt: "Retrato artístico",
+      },
     ],
   },
   feedbacks: [
     {
       id: "1",
-      name: "Ana & Lucas",
+      name: "Isabella & Enzo",
       comment:
-        "As fotos ficaram simplesmente perfeitas! Conseguiram captar toda a emoção do nosso dia de uma forma tão natural e leve. Recomendamos de olhos fechados!",
-      role: "Casamento",
+        "Ai Vini, encantada em CADA detalhe! Uma mais linda que a outra! Obrigada por todo carinho, e por estar presente nesse momento tão importante em minha vida! Fiquei muito emocionada! De verdade, você é uma pessoa e profissional INCRÍVEL. Não tô nem acreditando nesse presentão.",
+      role: "Casal",
     },
     {
       id: "2",
-      name: "Família Silva",
+      name: "Hadassa Moreira",
       comment:
-        "Fizemos um ensaio de família e o resultado foi incrível. As crianças ficaram super à vontade e as fotos transmitem exatamente a nossa essência.",
-      role: "Ensaio Família",
+        "Com certeza indicaremos muito seu trabalho! Como faz pra parar de olhar as fotos? Já olhei 196363838474940562 vezes desde que tu mandou. Tô apaixonada. Parece cena de filme. Meu Deus.",
+      role: "Família",
     },
     {
       id: "3",
-      name: "Mariana Costa",
+      name: "Raíssa Souza",
       comment:
-        "Profissionalismo impecável. Desde o primeiro contato até a entrega das fotos, tudo foi feito com muito carinho e atenção aos detalhes.",
-      role: "Ensaio Individual",
+        "Só um feedback positivo: eu entrei em contato com outros fotógrafos também para conhecer o trabalho... você foi super atencioso e o único que se preocupou em entender todas as minhas necessidades. Parabéns.",
+      role: "Individual",
     },
   ],
   footer: {
     copyright:
-      "© 2026 Vinícius Oller Fotografia. Todos os direitos reservados.", // 🔄 Texto do footer pode ser alterado aqui
+      "© 2026 Vinícius Oller Fotografia. Todos os direitos reservados.",
     contacts: {
-      whatsapp: "+55 12 98888-9999",
-      instagram: "@viniciusoller.foto",
+      whatsapp: "+55 54 9941-6395",
+      instagram: "@viniciusollerfotografo",
       email: "contato@viniciusoller.com",
     },
   },
