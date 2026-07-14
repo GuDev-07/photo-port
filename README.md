@@ -1,6 +1,6 @@
-# 📸 Landing Page
+# 📸 Vinícius Oller — Landing Page
 
-> Site profissional de portfólio e contato para fotógrafo especializado em fotografias de Gramado
+> Site profissional de portfólio e contato para fotógrafo especializado em casais, famílias e ensaios em Gramado - RS.
 
 ---
 
@@ -12,59 +12,57 @@ Landing page moderna desenvolvida em React com foco em performance visual e expe
 
 ## Tecnologias utilizadas
 
-| React | Interface e componentes |
-| TypeScript | Tipagem estática |
-| Vite | Build e dev server |
-| TailwindCSS | Estilização utilitária |
+| Tecnologia  | Finalidade              |
+| ----------- | ----------------------- |
+| React 18    | Interface e componentes |
+| TypeScript  | Tipagem estática        |
+| Vite        | Build e dev server      |
+| TailwindCSS | Estilização utilitária  |
 
 ---
 
 ## Estrutura do projeto
 
-```
 src/
 ├── assets/
-│   ├── images.ts
-│   └── portfolio/
-│       ├── ensaios/
-│       ├── casais/
-│       └── familias/
+│ ├── images.ts # Índice central de todas as imagens
+│ └── portfolio/
+│ ├── couples/ # Fotos de casais
+│ ├── family/ # Fotos de famílias
+│ └── individual/ # Ensaios individuais
 │
 ├── components/
-│   ├── Navbar/                    # Barra de navegação com menu mobile
-│   ├── Footer/                    # Rodapé com links e contatos
-│   ├── Button/                    # Botão reutilizável
-│   └── OptimizedImage/            # Componente de imagem com lazy loading e fade-in
+│ ├── Button/ # Botão reutilizável com variantes primary/outline
+│ └── Input/ # Input com suporte a máscara e toggle de senha
 │
 ├── modules/
-│   ├── Hero/                      # Seção inicial com foto de destaque e CTA
-│   ├── PortfolioGallery/          # Galeria com filtro por categoria
-│   ├── FeedbackSection/           # Depoimentos de clientes
-│   └── ContactForm/               # Formulário de contato integrado ao EmailJS
+│ ├── Hero/ # Seção inicial com foto de fundo e CTA
+│ ├── Navbar/ # Barra de navegação com menu mobile
+│ ├── PortfolioGallery/ # Galeria com filtro por categoria e lightbox
+│ ├── FeedbackSection/ # Depoimentos — grid no desktop, carrossel no mobile
+│ ├── ContactForm/ # Formulário de contato integrado ao WhatsApp
+│ └── Footer/ # Rodapé com links, contatos e botão de topo
 │
 ├── pages/
-│   └── Home/                      # Orquestrador — monta todas as seções
+│ └── Home/ # Orquestrador — monta todas as seções
 │
 ├── services/
-│   └── api.ts                     # Integração com EmailJS
+│ └── apiWhatsApp.ts # Integração com WhatsApp API
 │
 ├── hooks/
-│   └── useScrollAnimation.ts      # Hook de animação com Intersection Observer
+│ ├── useScrollAnimation.ts # Animações de entrada com Intersection Observer
+│ ├── useCarousel.ts # Lógica de carrossel com auto-avanço
+│ ├── useContactForm.ts # Estado e submit do formulário de contato
+│ ├── useNavbar.ts # Toggle do menu mobile
+│ └── index.ts # Barrel export dos hooks
+│
+├── utils/
+│ └── masks.ts # Máscara de telefone para o formulário
 │
 ├── types/
-│   └── index.ts                   # Interfaces TypeScript do projeto
+│ └── index.ts # Interfaces TypeScript: GalleryItem, FeedbackItem, PortfolioData
 │
-├── constants.tsx                  # ⭐ Fonte central de todo o conteúdo do site
-├── App.tsx                        # Ponto de entrada React
-├── main.tsx                       # Bootstrap da aplicação
-└── index.css                      # Estilos globais, Tailwind e fontes
-```
-
----
-
-## Como rodar o projeto
-
-### Pré-requisitos
-
-- Node.js 18 ou superior
-- npm ou yarn
+├── constants.tsx # Fonte central de todo o conteúdo do site
+├── App.tsx # Ponto de entrada React
+├── main.tsx # Bootstrap da aplicação
+└── index.css # Estilos globais, Tailwind, fontes e classes de animação

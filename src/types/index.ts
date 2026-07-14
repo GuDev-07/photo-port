@@ -30,11 +30,14 @@ export interface PortfolioData {
   gallery: {
     title: string;
     description: string;
+    featuredItems: GalleryItem[];
     items: GalleryItem[];
   };
   feedbacks: FeedbackItem[];
   footer: {
     copyright: string;
+    location?: string;
+    hours?: string;
     contacts: {
       whatsapp: string;
       instagram: string;
