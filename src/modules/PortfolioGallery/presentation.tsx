@@ -24,8 +24,8 @@ export const PortfolioGallery: React.FC = () => {
     (item) => activeFilter === "all" || item.category === activeFilter,
   );
 
-  const openImage = (src: string, alt: string, category: string) => {
-    setSelectedImage({ src, alt, category });
+  const openImage = (fullSrc: string, alt: string, category: string) => {
+    setSelectedImage({ src: fullSrc, alt, category });
   };
 
   return (
@@ -41,7 +41,9 @@ export const PortfolioGallery: React.FC = () => {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => openImage(item.src, item.alt, item.category)}
+                onClick={() =>
+                  openImage(item.fullSrc, item.alt, item.category)
+                }
                 className={`absolute w-[62%] max-w-77.5 aspect-4/4 cursor-pointer rounded-2xl overflow-hidden shadow-xl shadow-black/15 ring-1 ring-black/5 backdrop-blur bg-white ${
                   index === 0 ? "top-4 left-3 z-10" : "bottom-4 right-0 z-20"
                 }`}
@@ -107,7 +109,7 @@ export const PortfolioGallery: React.FC = () => {
             <button
               key={item.id}
               type="button"
-              onClick={() => openImage(item.src, item.alt, item.category)}
+              onClick={() => openImage(item.fullSrc, item.alt, item.category)}
               className="group relative aspect-4/5 cursor-pointer rounded-xl overflow-hidden bg-gray-100 border border-black/5 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.35)]"
             >
               <img

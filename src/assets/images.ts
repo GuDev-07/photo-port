@@ -1,47 +1,45 @@
-import casal01 from "./casais/casal1.jpg";
-import casal10 from "./casais/casal10.jpg";
-import casal11 from "./casais/casal11.jpg";
-import casal12 from "./casais/casal12.jpg";
-import casal13 from "./casais/casal13.jpg";
-import casal14 from "./casais/casal14.jpg";
-import casal02 from "./casais/casal2.jpg";
-import casal03 from "./casais/casal3.jpg";
-import casal04 from "./casais/casal4.jpg";
-import casal05 from "./casais/casal5.jpg";
-import casal06 from "./casais/casal6.jpg";
-import casal07 from "./casais/casal7.jpg";
-import casal08 from "./casais/casal8.jpg";
-import casal09 from "./casais/casal9.jpg";
-import ensaio01 from "./ensaios/ensaio1.jpg";
-import ensaio02 from "./ensaios/ensaio2.jpg";
-import ensaio03 from "./ensaios/ensaio3.jpg";
-import ensaio04 from "./ensaios/ensaio4.jpg";
-import ensaio05 from "./ensaios/ensaio5.jpg";
-import ensaio06 from "./ensaios/ensaio6.jpg";
-import familia01 from "./familia/familia1.jpg";
-import familia02 from "./familia/familia2.jpg";
-import familia03 from "./familia/familia3.jpg";
-import familia04 from "./familia/familia4.jpg";
-import familia05 from "./familia/familia5.jpg";
-import familia06 from "./familia/familia6.jpg";
+export interface OptimizedImage {
+  thumb: string;
+  full: string;
+}
+
+const imageBase = `${import.meta.env.BASE_URL}images`;
+
+function imagePair(folder: string, name: string): OptimizedImage {
+  return {
+    thumb: `${imageBase}/${folder}/${name}-thumb.webp`,
+    full: `${imageBase}/${folder}/${name}-full.webp`,
+  };
+}
+
+export const heroBackground = `${imageBase}/hero.webp`;
 
 export const portfolioImages = {
   couples: [
-    casal01,
-    casal02,
-    casal03,
-    casal04,
-    casal05,
-    casal06,
-    casal07,
-    casal08,
-    casal09,
-    casal10,
-    casal11,
-    casal12,
-    casal13,
-    casal14,
-  ],
-  family: [familia01, familia02, familia03, familia04, familia05, familia06],
-  individual: [ensaio01, ensaio02, ensaio03, ensaio04, ensaio05, ensaio06],
+    "casal1",
+    "casal2",
+    "casal3",
+    "casal4",
+    "casal5",
+    "casal6",
+    "casal7",
+    "casal8",
+    "casal9",
+    "casal10",
+    "casal11",
+    "casal12",
+    "casal13",
+    "casal14",
+  ].map((name) => imagePair("casais", name)),
+  family: ["familia1", "familia2", "familia3", "familia4", "familia5", "familia6"].map(
+    (name) => imagePair("familia", name),
+  ),
+  individual: [
+    "ensaio1",
+    "ensaio2",
+    "ensaio3",
+    "ensaio4",
+    "ensaio5",
+    "ensaio6",
+  ].map((name) => imagePair("ensaios", name)),
 } as const;

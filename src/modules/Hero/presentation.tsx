@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundVini from "../../assets/backgroundVini.jpg";
+import { heroBackground } from "../../assets/images";
 import { Button } from "../../components/Button/presentation";
 import { TypewriterText } from "../../components/TypewriterText/presentation";
 import { PORTFOLIO_DATA } from "../../constants";
@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-24 text-white animate-fade-in visible"
       style={{
-        backgroundImage: `linear-gradient(120deg, rgba(6, 21, 17, 0.75), rgba(6, 21, 17, 0.6)), url(${backgroundVini})`,
+        backgroundImage: `linear-gradient(120deg, rgba(6, 21, 17, 0.75), rgba(6, 21, 17, 0.6)), url(${heroBackground})`,
         backgroundSize: "cover",
         backgroundPosition: bgPosition,
       }}

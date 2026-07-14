@@ -7,6 +7,7 @@ export interface GalleryItem {
   id: string;
   category: "family" | "couples" | "individual";
   src: string;
+  fullSrc: string;
   alt: string;
 }
 

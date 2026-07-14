@@ -1,13 +1,27 @@
 import { portfolioImages } from "./assets/images";
 import { GalleryItem, NavLink, PortfolioData } from "./types";
 
+const toGalleryItem = (
+  image: { thumb: string; full: string },
+  id: string,
+  category: GalleryItem["category"],
+  alt: string,
+): GalleryItem => ({
+  id,
+  category,
+  src: image.thumb,
+  fullSrc: image.full,
+  alt,
+});
+
 const coupleGalleryItems: GalleryItem[] = portfolioImages.couples.map(
-  (src, index) => ({
-    id: `c${index + 1}`,
-    category: "couples",
-    src,
-    alt: `Casal ${String(index + 1).padStart(2, "0")}`,
-  }),
+  (image, index) =>
+    toGalleryItem(
+      image,
+      `c${index + 1}`,
+      "couples",
+      `Casal ${String(index + 1).padStart(2, "0")}`,
+    ),
 );
 
 export const NAV_LINKS: NavLink[] = [
@@ -32,93 +46,83 @@ export const PORTFOLIO_DATA: PortfolioData = {
     description:
       "Foram diversas experiências registradas nos últimos anos. De ensaios a famílias, aqui você encontra um pouco do meu trabalho e da minha visão fotográfica.",
     featuredItems: [
-      {
-        id: "feat1",
-        category: "couples",
-        src: portfolioImages.couples[11],
-        alt: "Casal em destaque",
-      },
-      {
-        id: "feat2",
-        category: "couples",
-        src: portfolioImages.couples[13],
-        alt: "Casal em destaque 2",
-      },
+      toGalleryItem(
+        portfolioImages.couples[11],
+        "feat1",
+        "couples",
+        "Casal em destaque",
+      ),
+      toGalleryItem(
+        portfolioImages.couples[13],
+        "feat2",
+        "couples",
+        "Casal em destaque 2",
+      ),
     ],
     items: [
       ...coupleGalleryItems,
-      {
-        id: "f1",
-        category: "family",
-        src: portfolioImages.family[0],
-        alt: "Família no parque",
-      },
-      {
-        id: "f2",
-        category: "family",
-        src: portfolioImages.family[1],
-        alt: "Mãe e filho",
-      },
-      {
-        id: "f3",
-        category: "family",
-        src: portfolioImages.family[2],
-        alt: "Família em ensaio",
-      },
-      {
-        id: "f4",
-        category: "family",
-        src: portfolioImages.family[3],
-        alt: "Família em momento especial",
-      },
-      {
-        id: "f5",
-        category: "family",
-        src: portfolioImages.family[4],
-        alt: "Família em ensaio externo",
-      },
-      {
-        id: "f6",
-        category: "family",
-        src: portfolioImages.family[5],
-        alt: "Família reunida",
-      },
-      {
-        id: "i1",
-        category: "individual",
-        src: portfolioImages.individual[0],
-        alt: "Ensaio individual ao ar livre",
-      },
-      {
-        id: "i2",
-        category: "individual",
-        src: portfolioImages.individual[1],
-        alt: "Retrato editorial",
-      },
-      {
-        id: "i3",
-        category: "individual",
-        src: portfolioImages.individual[2],
-        alt: "Ensaio individual",
-      },
-      {
-        id: "i4",
-        category: "individual",
-        src: portfolioImages.individual[3],
-        alt: "Retrato individual",
-      },
-      {
-        id: "i5",
-        category: "individual",
-        src: portfolioImages.individual[4],
-        alt: "Ensaio individual externo",
-      },
-      {
-        id: "i6",
-        category: "individual",
-        src: portfolioImages.individual[5],
-        alt: "Retrato artístico",
-      },
+      toGalleryItem(portfolioImages.family[0], "f1", "family", "Família no parque"),
+      toGalleryItem(portfolioImages.family[1], "f2", "family", "Mãe e filho"),
+      toGalleryItem(
+        portfolioImages.family[2],
+        "f3",
+        "family",
+        "Família em ensaio",
+      ),
+      toGalleryItem(
+        portfolioImages.family[3],
+        "f4",
+        "family",
+        "Família em momento especial",
+      ),
+      toGalleryItem(
+        portfolioImages.family[4],
+        "f5",
+        "family",
+        "Família em ensaio externo",
+      ),
+      toGalleryItem(
+        portfolioImages.family[5],
+        "f6",
+        "family",
+        "Família reunida",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[0],
+        "i1",
+        "individual",
+        "Ensaio individual ao ar livre",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[1],
+        "i2",
+        "individual",
+        "Retrato editorial",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[2],
+        "i3",
+        "individual",
+        "Ensaio individual",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[3],
+        "i4",
+        "individual",
+        "Retrato individual",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[4],
+        "i5",
+        "individual",
+        "Ensaio individual externo",
+      ),
+      toGalleryItem(
+        portfolioImages.individual[5],
+        "i6",
+        "individual",
+        "Retrato artístico",
+      ),
     ],
   },
   feedbacks: [
